@@ -6,3 +6,9 @@ dist/
 Thumbs.db
 
 yarn-error.log
+
+*.sketch
+*.fig
+*.xd
+
+.prettierignore
