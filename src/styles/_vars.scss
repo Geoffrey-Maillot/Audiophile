@@ -1,0 +1,18 @@
+// Colors
+
+$orange-primary: #d87d4a;
+$orange-secondary: #fbaf85;
+
+$black-primary: #000;
+$black-secondary: #101010;
+
+$grey: #cfcfcf;
+
+$white-primary: #fff;
+$white-secondary: #fafafa;
+$white-tertiary: #f1f1f1;
+
+:export {
+  orangeprimary: $orange-primary;
+  orangeSecondary: $orange-secondary;
+}
