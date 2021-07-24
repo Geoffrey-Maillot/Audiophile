@@ -1,33 +1,23 @@
 // == Import npm
 import React from 'react';
 
-import {HiOutlineChevronRight} from 'react-icons/hi'
-import {IconContext} from "react-icons"
-
-// Import Styled-Component
-import { H1, Textfield, Label, Radio, DivRadio, NumberArticle, ArticleButton } from 'src/styles/styledComponents'  
-
-// == Import
-import reactLogo from './react-logo.svg';
+// == Import style
 import './styles.scss';
 
-interface Props {
+/*interface Props {
   title: string;
 };
+const Title = ({title}: Props) => <H1>{title}</H1>*/
 
-const Title = ({title}: Props) => <H1>{title}</H1>
-
-
-const TestButton = () => <div>
-  <NumberArticle><ArticleButton>-</ArticleButton>0<ArticleButton>+</ArticleButton></NumberArticle>
-</div>
+// Import Component
+import NavBar from 'src/components/NavBar';
+import HomePage from 'src/components/HomePage';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <Title title={"composant: App"}/>
-    <TestButton/>
+    <NavBar />
+    <HomePage />
   </div>
 );
 

@@ -3,8 +3,15 @@
 
 body {
   font-family: 'Manrope', sans-serif;
+  width: 100%;
 }
 
-.react-icons {
-  vertical-align: middle;
+/*------------------------------------
+            LAYOUT
+------------------------------------*/
+
+.container-large {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
 }
