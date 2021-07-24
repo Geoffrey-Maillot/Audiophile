@@ -181,7 +181,6 @@ align-items: center;
   border-color: #D87D4A;
 
 }
-
 `
 
 //input type radio
@@ -189,6 +188,33 @@ export const Radio = styled.input`
 width: 20px;
 height: 20px;
 margin: 0 16px 0 0;
+`
+
+/*------------------------
+     Article Number
+-------------------------*/
+
+export const NumberArticle = styled.div`
+width: 120px;
+height: 48px;
+padding: 15px;
+background-color: #F1F1F1;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+font-weight: bold;
 
 `
 
+export const ArticleButton = styled.button`
+color: #B5B5B5;
+background-color: transparent;
+border: none;
+font-size: .875em;
+font-weight: bold;
+
+  :hover {
+    color: #D87D4A;
+}
+`
