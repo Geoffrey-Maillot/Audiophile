@@ -128,9 +128,41 @@ color: #D87D4A;
           TextField
 -------------------------*/
 
+// input Textfield
 export const Textfield = styled.input`
 
-width: 50%;
+width: 100%;
+height: 56px;
+border: 1px solid;
+border-color: ${props => props.error ? "#CD2C2C" : "#CFCFCF"};
+border-radius: 8px;
+padding-left: 24px;
+
+color: #000;
+font-weight: bold;
+font-size: .875em;
+caret-color: #D87D4A;
+
+  :: placeholder {
+color: #999;
+font-weight: bold;
+font-size: .875em;
+}
+
+  : focus {
+border-color: ${props => props.error ? "CD2C2C" : "#D87D4A"};
+}
+`
+//label Texfield
+export const Label = styled.label`
+font-size: .75em;
+font-weight: bold;
+line-height: 2.5em;
+`
+
+// div contain input radio + label
+export const DivRadio = styled.div`
+width: 100%;
 height: 56px;
 border: 1px solid #CFCFCF;
 border-radius: 8px;
@@ -139,16 +171,24 @@ padding-left: 24px;
 
 color: #000;
 font-weight: bold;
-font-size: .875em
+font-size: .875em;
 
-:: placeholder {
-color: #999;
-font-weight: bold;
-font-size: .875em
+display: flex;
+justify-content: start;
+align-items: center;
+
+:hover, :focus-within {
+  border-color: #D87D4A;
+
 }
 
-
-@media(max-width: 768px) {
- width: 100%;
-}
 `
+
+//input type radio
+export const Radio = styled.input`
+width: 20px;
+height: 20px;
+margin: 0 16px 0 0;
+
+`
+
