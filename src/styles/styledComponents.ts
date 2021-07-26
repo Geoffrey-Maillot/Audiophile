@@ -1,19 +1,27 @@
 /*------------------------
      CUSTOM COMPONENTS
 -------------------------*/
-
 import styled from 'styled-components';
-// Import variables 
-// Ne fonctionne pas
-//import colors from 'src/styles/_vars.scss';
 
+// ==> Props
+interface Button {
+primary: boolean;
+}
+
+interface Textfield {
+error: boolean;
+}
+
+interface Typo {
+color: string
+}
 
 
 /*------------------------
       TYPOGRAPHY
 -------------------------*/
 
-export const H1 = styled.h1`
+export const H1 = styled.h1<Typo>`
 font-size: 3em;
 font-weight: bold;
 text-transform: uppercase;
@@ -25,7 +33,7 @@ export const H1Mobile = styled(H1)`
 font-size: 1.8em;
 
 `
-export const H2 = styled.h2`
+export const H2 = styled.h2<Typo>`
 font-size: 2.5em;
 font-weight: bold;
 text-transform: uppercase;
@@ -33,7 +41,7 @@ text-transform: uppercase;
 letter-spacing: .152em;
 color: ${props => props.color || "#000"};
 `
-export const H3 = styled.h3`
+export const H3 = styled.h3<Typo>`
 font-size: 2em;
 font-weight: bold;
 text-transform: uppercase;
@@ -41,7 +49,7 @@ text-transform: uppercase;
 letter-spacing: .07em;
 color: ${props => props.color || "#000"};
 `
-export const H4 = styled.h4`
+export const H4 = styled.h4<Typo>`
 font-size: 1.75em;
 font-weight: bold;
 text-transform: uppercase;
@@ -49,7 +57,7 @@ text-transform: uppercase;
 letter-spacing: .125em;
 color: ${props => props.color || "#000"};
 `
-export const H5 = styled.h5`
+export const H5 = styled.h5<Typo>`
 font-size: 1.5em;
 font-weight: bold;
 text-transform: uppercase;
@@ -57,7 +65,7 @@ text-transform: uppercase;
 letter-spacing: .107em;
 color: ${props => props.color || "#000"};
 `
-export const H6 = styled.h6`
+export const H6 = styled.h6<Typo>`
 font-size: 1.125em;
 font-weight: bold;
 text-transform: uppercase;
@@ -65,7 +73,7 @@ text-transform: uppercase;
 letter-spacing: .08em;
 color: ${props => props.color || "#000"};
 `
-export const OverlineText = styled.p`
+export const OverlineText = styled.p<Typo>`
 font-size: .875em;
 font-weight: 400;
 text-transform: uppercase;
@@ -74,7 +82,7 @@ letter-spacing: .625em;
 color: ${props => props.color || "#000"};
 `
 
-export const SubText = styled.p`
+export const SubText = styled.p<Typo>`
 font-size: .8125em;
 font-weight: bold;
 text-transform: uppercase;
@@ -82,7 +90,7 @@ text-transform: uppercase;
 letter-spacing: .058em;
 color: ${props => props.color || "#000"};
 `
-export const Body = styled.p`
+export const Body = styled.p<Typo>`
 font-size: .9375em;
 font-weight: 500;
 text-transform: uppercase;
@@ -94,7 +102,7 @@ color: ${props => props.color || "#000"};
           BUTTON
 -------------------------*/
 
-export const Button = styled.button`
+export const Button = styled.button<Button>`
 width: 160px;
 height: 48px;
 border: ${props => props.primary ? "none" : "1px solid #000"};
@@ -134,7 +142,7 @@ color: #D87D4A;
 -------------------------*/
 
 // input Textfield
-export const Textfield = styled.input`
+export const Textfield = styled.input<Textfield>`
 
 width: 100%;
 height: 56px;
