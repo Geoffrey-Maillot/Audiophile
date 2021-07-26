@@ -14,12 +14,16 @@ import styled from 'styled-components';
 -------------------------*/
 
 export const H1 = styled.h1`
-font-size: 3.5em;
+font-size: 3em;
 font-weight: bold;
 text-transform: uppercase;
 // line-height: 3.625em;
 letter-spacing: .125em;
 color: ${props => props.color || "#000"};
+`
+export const H1Mobile = styled(H1)`
+font-size: 1.8em;
+
 `
 export const H2 = styled.h2`
 font-size: 2.5em;
@@ -100,6 +104,7 @@ transition: all .3s;
 font-weight: bold;
 font-size: .8125em;
 letter-spacing: .0625em;
+text-transform: uppercase;
 
 
   &:hover {

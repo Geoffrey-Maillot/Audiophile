@@ -1,7 +1,41 @@
-.headerhome {
-  min-height: 100vh;
-  background: url('src/assets/img/home/mobile/image-header.jpg') center center /
-    cover no-repeat;
+.container-headerhome {
+  width: 100%;
+  background-color: #191919;
 
-  text-align: center;
+  .headerhome {
+    min-height: 50vh;
+    padding: 100px 20px 80px 20px;
+    background: url('src/assets/img/home/mobile/image-header.jpg') center center /
+      cover no-repeat;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_container {
+      max-width: 380px;
+    }
+  }
+
+  /*--------------------
+    Media Querries
+----------------------*/
+  @media screen and (min-width: 768px) {
+    .headerhome {
+      background-image: url('src/assets/img/home/tablet/image-header.jpg');
+    }
+  }
+
+  @media screen and (min-width: 1124px) {
+    .headerhome {
+      padding: 150px 20px 150px 20px;
+      background: url('src/assets/img/home/desktop/image-hero.jpg') no-repeat;
+      background-position: left 20% center;
+      background-size: 100%;
+      text-align: left;
+      justify-content: flex-start;
+    }
+  }
 }
