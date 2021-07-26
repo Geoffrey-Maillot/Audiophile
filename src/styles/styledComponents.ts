@@ -13,7 +13,7 @@ error: boolean;
 }
 
 interface Typo {
-color: string
+color?: string;
 }
 
 
@@ -122,14 +122,15 @@ border: none;
 }
 `
 
-export const ButtonShop = styled.button`
+export const ButtonShop = styled.button<Typo>`
 border: none;
-background: #fff;
-color: #000;
+background: transparent;
+color: ${props => props.color || "#000"};
 transition: all .3s;
 font-size: .8125em;
 font-weight: bold;
 letter-spacing: .0625em;
+text-transform: uppercase;
 
   &:hover {
 color: #D87D4A;

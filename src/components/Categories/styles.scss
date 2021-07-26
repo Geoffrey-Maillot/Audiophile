@@ -1,0 +1,37 @@
+.categories {
+  width: 100%;
+  margin-top: 110px;
+
+  .categories_list {
+    width: 100%;
+
+    .list-item {
+      text-align: center;
+      width: 100%;
+      height: 185px;
+      min-width: 223px;
+      max-width: 350px;
+
+      background-color: #f1f1f1;
+      border-radius: 8px;
+      margin: 80px auto 80px auto;
+      padding-bottom: 22px;
+
+      &_contain {
+        transform: translateY(-30%);
+
+        .contain-img {
+          max-width: 180px;
+        }
+
+        .contain-title {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------
+MEDIA QUERRIES
+----------------------------*/
