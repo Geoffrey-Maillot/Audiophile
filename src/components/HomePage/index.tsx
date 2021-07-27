@@ -3,7 +3,7 @@ import React from 'react';
 
 // Import Style
 import './styles.scss';
-import { H1, H2, H4, Button, Body } from 'src/styles/styledComponents';
+import { H1, H2, H4, H5, Button, Body } from 'src/styles/styledComponents';
 
 // Import Components
 import HeaderHome from './HeaderHome';
@@ -49,8 +49,15 @@ const HomePage = () => {
           </div>
         </div>
         <div className="speaker-zx7">
-          <H4>zx7 speaker</H4>
+          <H5>zx7 speaker</H5>
           <Button>See Product</Button>
+        </div>
+        <div className="earphone">
+          <div className="earphone_img" />
+          <div className="earphone_content">
+            <H5 className="content-text">YX1 earphones</H5>
+            <Button>See Product</Button>
+          </div>
         </div>
       </main>
     </div>
