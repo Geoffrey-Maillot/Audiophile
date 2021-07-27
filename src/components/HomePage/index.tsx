@@ -3,7 +3,7 @@ import React from 'react';
 
 // Import Style
 import './styles.scss';
-import { H1, H2, Button, Body } from 'src/styles/styledComponents';
+import { H1, H2, H4, Button, Body } from 'src/styles/styledComponents';
 
 // Import Components
 import HeaderHome from './HeaderHome';
@@ -41,13 +41,16 @@ const HomePage = () => {
                 zx9 <br /> speaker
               </H1>
             )}
-
             <Body className="speaker-zx9--body" color="#fff">
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </Body>
             <Button>see product</Button>
           </div>
+        </div>
+        <div className="speaker-zx7">
+          <H4>zx7 speaker</H4>
+          <Button>See Product</Button>
         </div>
       </main>
     </div>
