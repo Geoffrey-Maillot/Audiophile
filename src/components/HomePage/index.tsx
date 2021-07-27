@@ -8,6 +8,9 @@ import { H1, H2, H4, H5, Button, Body } from 'src/styles/styledComponents';
 // Import Components
 import HeaderHome from './HeaderHome';
 import Categories from 'src/components/Categories';
+import BestGear from 'src/components/BestGear';
+
+// Import IMG
 import speakerZx9 from 'src/assets/img/home/mobile/image-speaker-zx9.png';
 
 // Import Librairie
@@ -18,6 +21,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+      {/*HEADER */}
       <HeaderHome />
       <main className="container-large">
         <Categories />
@@ -48,10 +52,12 @@ const HomePage = () => {
             <Button>see product</Button>
           </div>
         </div>
+        {/*SPEAKER ZX7*/}
         <div className="speaker-zx7">
           <H5>zx7 speaker</H5>
           <Button>See Product</Button>
         </div>
+        {/*SPEAKER EARPHONE*/}
         <div className="earphone">
           <div className="earphone_img" />
           <div className="earphone_content">
@@ -59,6 +65,8 @@ const HomePage = () => {
             <Button>See Product</Button>
           </div>
         </div>
+        {/*BEST AUDIO GEAR*/}
+        <BestGear />
       </main>
     </div>
   );

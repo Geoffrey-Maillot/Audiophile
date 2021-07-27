@@ -1,0 +1,72 @@
+.bestgear {
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 100px;
+  &_image {
+    width: 100%;
+    height: 300px;
+    background: url('src/assets/img/shared/mobile/image-best-gear.jpg') center
+      center / cover no-repeat;
+  }
+  &_content {
+    max-width: 573px;
+    margin: 0 auto 0 auto;
+    .content-title {
+      max-width: 335px;
+      margin: 40px auto;
+    }
+  }
+}
+
+/*-----------------------------
+       MEDIA QUERRIES
+-------------------------------*/
+
+/*-----------------------------
+       TABLET
+-------------------------------*/
+
+@media screen and (min-width: 768px) {
+  .bestgear {
+    &_image {
+      background: url('src/assets/img/shared/tablet/image-best-gear.jpg') center
+        center / cover no-repeat;
+    }
+    &_content {
+      .content-title {
+        max-width: 515px;
+      }
+    }
+  }
+}
+
+/*-----------------------------
+       DESKTOP
+-------------------------------*/
+
+@media screen and (min-width: 1124px) {
+  .bestgear {
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    &_image {
+      width: 50%;
+      height: 588px;
+      background: url('src/assets/img/shared/desktop/image-best-gear.jpg')
+        center center / cover no-repeat;
+    }
+    &_content {
+      text-align: left;
+      width: 50%;
+      padding-right: 125px;
+
+      .content-title {
+        margin: 0 0 40px 0;
+        max-width: 335px;
+      }
+    }
+  }
+}

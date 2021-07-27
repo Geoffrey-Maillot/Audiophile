@@ -93,7 +93,6 @@ color: ${props => props.color || "#000"};
 export const Body = styled.p<Typo>`
 font-size: .9375em;
 font-weight: 500;
-text-transform: uppercase;
 line-height: 1.5625em;
 color: ${props => props.color || "#000"};
 `
