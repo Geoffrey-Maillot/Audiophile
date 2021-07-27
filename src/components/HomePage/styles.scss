@@ -1,3 +1,6 @@
+/*----------------------------------------
+              HEADER
+----------------------------------------*/
 .container-headerhome {
   width: 100%;
   background-color: #191919;
@@ -18,17 +21,55 @@
       max-width: 380px;
     }
   }
+}
 
-  /*--------------------
-    Media Querries
-----------------------*/
-  @media screen and (min-width: 768px) {
+/*----------------------------------------
+              SPEAKER ZX9
+----------------------------------------*/
+.speaker-zx9 {
+  background: url('src/assets/img/home/desktop/pattern-circles.svg') center -138px /
+    625px no-repeat;
+  text-align: center;
+  width: 100%;
+  background-color: #d87d4a;
+  border-radius: 8px;
+  padding-bottom: 55px;
+
+  &--img {
+    width: 172px;
+    margin: 60px 0 50px 0;
+  }
+
+  &--body {
+    max-width: 350px;
+    margin: 24px auto 24px auto;
+  }
+}
+
+/*-----------------------------
+       MEDIA QUERRIES
+-------------------------------*/
+
+/*TABLETTE*/
+@media screen and (min-width: 768px) {
+  // HEADER
+  .container-headerhome {
     .headerhome {
       background-image: url('src/assets/img/home/tablet/image-header.jpg');
     }
   }
 
-  @media screen and (min-width: 1124px) {
+  // SPEAKER-ZX9
+  .speaker-zx9 {
+    background: url('src/assets/img/home/desktop/pattern-circles.svg') center -274px /
+      854px no-repeat;
+    background-color: #d87d4a;
+  }
+}
+
+/*DESKTOP*/
+@media screen and (min-width: 1124px) {
+  .container-headerhome {
     .headerhome {
       padding: 150px 20px 150px 20px;
       background: url('src/assets/img/home/desktop/image-hero.jpg') no-repeat;
@@ -37,5 +78,36 @@
       text-align: left;
       justify-content: flex-start;
     }
+  }
+  // SPEAKER-ZX9
+  .speaker-zx9 {
+    background: url('src/assets/img/home/desktop/pattern-circles.svg') -144px -34px /
+      960px no-repeat;
+    background-color: #d87d4a;
+
+    padding: 114px 0 0 0;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    overflow: hidden;
+
+    &--img {
+      width: 371px;
+      margin: 0;
+      position: relative;
+      left: 150px;
+      top: 20px;
+    }
+
+    &--body {
+      max-width: 350px;
+      margin: 24px 0 24px 0;
+    }
+  }
+  .speaker-zx9 > div {
+    width: 50%;
+  }
+  .speaker-zx9 div:nth-child(even) {
+    padding-left: 114px;
   }
 }

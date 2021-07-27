@@ -18,6 +18,7 @@
       padding-bottom: 22px;
 
       &_contain {
+        width: 100%;
         transform: translateY(-30%);
 
         .contain-img {
@@ -35,3 +36,15 @@
 /*--------------------------
 MEDIA QUERRIES
 ----------------------------*/
+@media screen and (min-width: 768px) {
+  .categories_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .list-item {
+      margin-left: 5px !important;
+      margin-right: 5px !important;
+    }
+  }
+}

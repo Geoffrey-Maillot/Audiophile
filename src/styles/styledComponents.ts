@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 // ==> Props
 interface Button {
-primary: boolean;
+primary?: boolean;
 }
 
 interface Textfield {
-error: boolean;
+error?: boolean;
 }
 
 interface Typo {
@@ -106,7 +106,7 @@ export const Button = styled.button<Button>`
 width: 160px;
 height: 48px;
 border: ${props => props.primary ? "none" : "1px solid #000"};
-background: ${props => props.primary ? "#D87D4A" : "#fff"};
+background: ${props => props.primary ? "#D87D4A" : "transparent"};
 color: ${props => props.primary ? "#fff" : "#000"};
 transition: all .3s;
 font-weight: bold;
