@@ -19,7 +19,7 @@ import { ButtonShop, H6 } from 'src/styles/styledComponents';
 // Component
 const Categories = () => (
   <IconContext.Provider value={{ style: { position: 'relative', top: 2 } }}>
-    <section className="categories container-large">
+    <section className="categories">
       <ul className="categories_list">
         <li className="list-item">
           <div className="list-item_contain">

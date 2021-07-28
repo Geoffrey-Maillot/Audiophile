@@ -1,0 +1,130 @@
+/*-----------------------------
+       FOOTER
+-------------------------------*/
+
+.container-footer {
+  width: 100%;
+  background-color: #101010;
+
+  .footer {
+    position: relative;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    .navbar {
+      .nav {
+        width: 200px;
+
+        margin: 60px auto;
+
+        &-link {
+          margin: 30px;
+          display: inline-block;
+        }
+      }
+    }
+
+    .content {
+      .copyright {
+        margin: 60px 0;
+      }
+
+      .logo-nav {
+      }
+      .logo-nav img {
+        margin: 0 7.5px;
+      }
+    }
+  }
+}
+
+.footer::before {
+  content: '';
+  width: 101px;
+  height: 4px;
+  background-color: #d87d4a;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*-----------------------------
+        MEDIA QUERRIES
+-------------------------------*/
+
+/*-----------------------------
+           TABLET
+-------------------------------*/
+
+@media screen and (min-width: 768px) {
+  .container-footer {
+    .footer {
+      text-align: left;
+      padding-bottom: 50px;
+      .navbar {
+        .nav {
+          width: 655px;
+          margin: 40px 0;
+
+          &-link {
+            margin: 0px 30px 0 0;
+            display: inline-block;
+          }
+        }
+      }
+
+      .content {
+        .copyright {
+          margin: 80px 0 0 0;
+        }
+
+        .logo-nav {
+          position: absolute;
+          bottom: 45px;
+          right: 12.5px;
+        }
+      }
+    }
+  }
+  .footer::before {
+    left: 71px;
+  }
+}
+
+/*-----------------------------
+           DESKTOP
+-------------------------------*/
+
+@media screen and (min-width: 1124px) {
+  .container-footer {
+    .footer {
+      .navbar {
+        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .nav {
+          width: 655px;
+          &-link {
+            margin: 0 0 0 30px;
+          }
+        }
+      }
+
+      .content {
+        &-text {
+          max-width: 540px;
+        }
+        .copyright {
+          margin: 80px 0 0 0;
+        }
+
+        .logo-nav {
+          position: absolute;
+          bottom: 150px;
+        }
+      }
+    }
+  }
+}

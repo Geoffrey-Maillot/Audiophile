@@ -12,12 +12,14 @@ const Title = ({title}: Props) => <H1>{title}</H1>*/
 // Import Component
 import NavBar from 'src/components/NavBar';
 import HomePage from 'src/components/HomePage';
+import Footer from 'src/components/Footer';
 
 // == Composant
 const App = () => (
   <div className="app">
     <NavBar />
     <HomePage />
+    <Footer />
   </div>
 );
 

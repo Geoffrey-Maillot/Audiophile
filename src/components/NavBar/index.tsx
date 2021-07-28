@@ -3,7 +3,7 @@ import React from 'react';
 
 // Import Style
 import './styles.scss';
-import { OverlineText } from 'src/styles/styledComponents';
+import { SubText } from 'src/styles/styledComponents';
 
 // Import librairie
 import { useMediaQuery } from 'react-responsive';
@@ -17,7 +17,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 // Component
 const NavBar = () => {
-  const isDeskop = useMediaQuery({ query: '(min-width: 1124px)' });
+  const isDeskop = useMediaQuery({ query: '(min-width: 900px)' });
 
   return (
     <div className="container-navbar">
@@ -27,16 +27,16 @@ const NavBar = () => {
         {isDeskop && (
           <nav className="nav">
             <a href="#">
-              <OverlineText color="#fff">Home</OverlineText>
+              <SubText color="#fff">Home</SubText>
             </a>
             <a href="#">
-              <OverlineText color="#fff">Headphones</OverlineText>
+              <SubText color="#fff">Headphones</SubText>
             </a>
             <a href="#">
-              <OverlineText color="#fff">speakers</OverlineText>
+              <SubText color="#fff">speakers</SubText>
             </a>
             <a href="#">
-              <OverlineText color="#fff">eadphones</OverlineText>
+              <SubText color="#fff">eadphones</SubText>
             </a>
           </nav>
         )}
