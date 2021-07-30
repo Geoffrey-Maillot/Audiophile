@@ -13,16 +13,16 @@ const Title = ({title}: Props) => <H1>{title}</H1>*/
 import NavBar from 'src/components/NavBar';
 import HomePage from 'src/components/HomePage';
 import Footer from 'src/components/Footer';
-import CategoryPage from 'src/components/CategoryPage';
-//import ProductPage from 'src/components/ProductPage';
+// import CategoryPage from 'src/components/CategoryPage';
+import ProductPage from 'src/components/ProductPage';
 
 // == Composant
 const App = () => (
   <div className="app">
     <NavBar />
     {/* <HomePage />*/}
-    <CategoryPage />
-    {/*<ProductPage /> */}
+    { /*<CategoryPage /> */ }
+    <ProductPage />
     <Footer />
   </div>
 );

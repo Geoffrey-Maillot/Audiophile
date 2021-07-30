@@ -121,20 +121,19 @@ border: none;
 }
 `
 
-export const ButtonShop = styled.button<Typo>`
-border: none;
-background: transparent;
-color: ${props => props.color || "#000"};
-transition: all .3s;
+export const ButtonShop = styled.div<Typo>`
+width: 120px;
+height: 48px;
+padding: 15px;
+display: inline-flex;
+justify-content: space-between;
+align-items: center;
+background: #f1f1f1;
+color: "#000";
 font-size: .8125em;
 font-weight: bold;
 letter-spacing: .0625em;
 text-transform: uppercase;
-
-  &:hover {
-color: #D87D4A;
-
-}
 `
 
 /*------------------------
