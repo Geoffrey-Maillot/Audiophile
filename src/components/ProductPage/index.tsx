@@ -32,6 +32,20 @@ import imageGalleryDesktop1 from 'src/assets/img/product-xx99-mark-two-headphone
 import imageGalleryDesktop2 from 'src/assets/img/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg';
 import imageGalleryDesktop3 from 'src/assets/img/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg';
 
+//Import IMG Aslo Like
+//Mobile
+import asloLikeMobile1 from 'src/assets/img/shared/mobile/image-xx99-mark-one-headphones.jpg';
+import asloLikeMobile2 from 'src/assets/img/shared/mobile/image-xx59-headphones.jpg';
+import asloLikeMobile3 from 'src/assets/img/shared/mobile/image-zx9-speaker.jpg';
+//Mobile
+import asloLikeTablet1 from 'src/assets/img/shared/tablet/image-xx99-mark-one-headphones.jpg';
+import asloLikeTablet2 from 'src/assets/img/shared/tablet/image-xx59-headphones.jpg';
+import asloLikeTablet3 from 'src/assets/img/shared/tablet/image-zx9-speaker.jpg';
+//Mobile
+import asloLikeDesktop1 from 'src/assets/img/shared/desktop/image-xx99-mark-one-headphones.jpg';
+import asloLikeDesktop2 from 'src/assets/img/shared/desktop/image-xx59-headphones.jpg';
+import asloLikeDesktop3 from 'src/assets/img/shared/desktop/image-zx9-speaker.jpg';
+
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
 
@@ -47,8 +61,14 @@ const ProductPage = () => {
   });
   const isDesktop = useMediaQuery({ query: '(min-width: 1124px)' });
 
+  {
+    /*  RETURN -->*/
+  }
   return (
     <section className="product-page container-large">
+      <Body className="goback" color="#8c8c8c">
+        Go Back
+      </Body>
       {/* PRODUCT IMG / DESCRIPTION */}
       <div className="product">
         <div className="product_img">
@@ -182,6 +202,69 @@ const ProductPage = () => {
         />
       </div>
 
+      {/* Aslo Like*/}
+      <div className="aslolike">
+        <H5>You may aslo like</H5>
+        <div className="aslolike_container">
+          <div className="aslolike_container-productone">
+            <div className="container-image">
+              <img
+                src={
+                  isMobile
+                    ? asloLikeMobile1
+                    : isTablet
+                    ? asloLikeTablet1
+                    : isDesktop
+                    ? asloLikeDesktop1
+                    : null
+                }
+                alt="Image Aslo Like"
+              />
+            </div>
+
+            <H5 className="aslolike-title">XX99 Mark I</H5>
+            <Button primary>See Product</Button>
+          </div>
+          <div className="aslolike_container-producttwo">
+            <div className="container-image">
+              <img
+                src={
+                  isMobile
+                    ? asloLikeMobile2
+                    : isTablet
+                    ? asloLikeTablet2
+                    : isDesktop
+                    ? asloLikeDesktop2
+                    : null
+                }
+                alt="Image Aslo Like"
+              />
+            </div>
+
+            <H5 className="aslolike-title">XX99 Mark I</H5>
+            <Button primary>See Product</Button>
+          </div>
+          <div className="aslolike_container-productthree">
+            <div className="container-image">
+              <img
+                src={
+                  isMobile
+                    ? asloLikeMobile3
+                    : isTablet
+                    ? asloLikeTablet3
+                    : isDesktop
+                    ? asloLikeDesktop3
+                    : null
+                }
+                alt="Image Aslo Like"
+              />
+            </div>
+
+            <H5 className="aslolike-title">XX99 Mark I</H5>
+            <Button primary>See Product</Button>
+          </div>
+        </div>
+      </div>
       {/*  Import Component */}
       <Categories />
       <BestGear />

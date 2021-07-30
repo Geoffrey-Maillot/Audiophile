@@ -3,6 +3,9 @@
 -------------------------------*/
 
 .product-page {
+  .goback {
+    margin: 40px 0 30px 0;
+  }
   .product {
     text-align: left;
     &_img {
@@ -15,7 +18,7 @@
       max-height: 327px;
     }
 
-    margin: 64px 0 100px 0;
+    margin-bottom: 100px;
     &_description {
       .overline {
         margin-top: 30px;
@@ -68,7 +71,7 @@
   }
 
   /*-----------------------------
-    PRODUCT FEATURES / BOX
+        GALLERY
 -------------------------------*/
   .gallery {
     width: 100%;
@@ -94,6 +97,62 @@
       height: 368px;
       border-radius: 8px;
       margin: 20px 0;
+    }
+  }
+
+  /*-----------------------------
+        ASLO LIKE
+-------------------------------*/
+  .aslolike {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 170px;
+    img {
+      border-radius: 8px;
+    }
+    &_container {
+      width: 100%;
+      &-productone {
+        margin-top: 50px;
+
+        .container-image {
+          background-color: #f1f1f1;
+          border-radius: 8px;
+        }
+
+        img {
+          border-radius: 8px;
+        }
+        .aslolike-title {
+          margin: 40px 0;
+        }
+      }
+
+      &-producttwo {
+        margin-top: 60px;
+
+        .container-image {
+          background-color: #f1f1f1;
+          border-radius: 8px;
+        }
+
+        .aslolike-title {
+          margin: 40px 0;
+        }
+      }
+
+      &-productthree {
+        margin-top: 60px;
+
+        .container-image {
+          background-color: #f1f1f1;
+          border-radius: 8px;
+        }
+
+        .aslolike-title {
+          margin: 40px 0;
+        }
+      }
     }
   }
 }
@@ -180,6 +239,37 @@
         width: calc(60% - 10px);
         min-height: 368px;
         margin: 0;
+      }
+    }
+
+    // ASLO LIKE
+    .aslolike {
+      &_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-productone {
+          margin-top: 60px;
+          width: calc(33% - 5px);
+
+          .container-image {
+            height: 320px;
+          }
+        }
+        &-producttwo {
+          width: calc(33% - 5px);
+
+          .container-image {
+            height: 320px;
+          }
+        }
+        &-productthree {
+          width: calc(33% - 5px);
+
+          .container-image {
+            height: 320px;
+          }
+        }
       }
     }
   }
