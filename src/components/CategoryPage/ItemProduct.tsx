@@ -11,6 +11,9 @@ import {
   Button,
 } from 'src/styles/styledComponents';
 
+// Import React Router
+import { Link } from 'react-router-dom';
+
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
 
@@ -18,6 +21,7 @@ import { useMediaQuery } from 'react-responsive';
 interface Props {
   new: boolean;
   slug: string;
+  name: string;
   description: string;
   image: {
     mobile: string;
@@ -31,19 +35,10 @@ interface Props {
 const ItemProduct = ({
   new: novelty,
   slug,
+  name,
   description,
   image: { mobile, tablet, desktop },
 }: Props) => {
-  const [image, setImage] = useState<any>();
-  useEffect(() => {
-    async function loadData() {
-      const imageLoad = await import(`src/assets/img/${mobile}.jpg`);
-      await console.log(imageLoad);
-      setImage(imageLoad.default);
-    }
-    loadData();
-  }, []);
-
   {
     /* Media querries rules*/
   }
@@ -78,12 +73,14 @@ const ItemProduct = ({
           </OverlineText>
         )}
 
-        {isMobile && <H5 className="title">{slug}</H5>}
-        {!isMobile && <H4 className="title">{slug}</H4>}
+        {isMobile && <H5 className="title">{name}</H5>}
+        {!isMobile && <H4 className="title">{name}</H4>}
         <Body className="body" color="#8c8c8c">
           {description}
         </Body>
-        <Button primary>See Product</Button>
+        <Link to={`/product/${slug}`}>
+          <Button primary>See Product</Button>
+        </Link>
       </div>
     </div>
   );

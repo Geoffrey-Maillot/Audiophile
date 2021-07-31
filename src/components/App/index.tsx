@@ -30,8 +30,9 @@ const App = () => (
       <Route path="/category/:slug">
         <CategoryPage />
       </Route>
-
-      {/*<ProductPage />*/}
+      <Route path="/product/:slug">
+        <ProductPage />
+      </Route>
     </Switch>
 
     <Footer />
