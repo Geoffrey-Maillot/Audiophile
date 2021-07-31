@@ -101,7 +101,7 @@ const ProductPage = () => {
             <button className="buttonshop-button">-</button>0
             <button className="buttonshop-button">+</button>
           </ButtonShop>
-          <Button primary>See Product</Button>
+          <Button primary>Add to cart</Button>
         </div>
       </div>
       {/* PRODUCT FEATURES */}

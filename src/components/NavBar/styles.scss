@@ -17,6 +17,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      &-link {
+        color: #fff;
+      }
+      &-link:hover {
+        color: #d87d4a;
+      }
+      &-link--active {
+        color: #d87d4a;
+      }
     }
   }
 }
