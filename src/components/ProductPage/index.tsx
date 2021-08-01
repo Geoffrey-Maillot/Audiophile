@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 // Import React Router
 import { useParams } from 'react-router';
@@ -18,7 +18,11 @@ const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = data.filter((item) => item.slug === slug)[0];
 
-  console.log(product);
+  // Scroll to the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return <Product {...product} />;
 };
 

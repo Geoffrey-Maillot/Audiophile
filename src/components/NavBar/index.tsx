@@ -1,5 +1,5 @@
 // Import React
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Import Style
 import './styles.scss';
@@ -21,7 +21,9 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 // Component
 const NavBar = () => {
   const isDeskop = useMediaQuery({ query: '(min-width: 900px)' });
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div className="container-navbar">
       <div className="navbar container-large">

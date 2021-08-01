@@ -1,5 +1,5 @@
 // Import React
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Import Style
 import './styles.scss';
@@ -19,11 +19,16 @@ import data from 'src/data/data.json';
 // --> Component
 
 const CategoryPage = () => {
+  // Filter Product
   const { slug } = useParams<{ slug: string }>();
-
   const products = data.filter((item) => item.category === slug);
-  console.log(products);
 
+  // Scroll to the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
+  // RETURN -->
   return (
     <div className="category-page">
       {/* HEADER */}

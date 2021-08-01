@@ -4,6 +4,9 @@ import React from 'react';
 // Import Style
 import './styles.scss';
 
+// Import React Router
+import { Link } from 'react-router-dom';
+
 // Import IMG
 import logo from 'src/assets/img/audiophile.png';
 import logoFacebook from 'src/assets/img/shared/desktop/icon-facebook.svg';
@@ -17,21 +20,23 @@ const Footer = () => (
   <div className="container-footer">
     <footer className="footer container-large">
       <div className="navbar ">
-        <img src={logo} alt="logo" />
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
 
         <nav className="nav">
-          <a className="nav-link" href="#">
+          <Link to="/" className="nav-link" href="#">
             <SubText color="#fff">Home</SubText>
-          </a>
-          <a className="nav-link" href="#">
+          </Link>
+          <Link to="/category/headphones" className="nav-link" href="#">
             <SubText color="#fff">Headphones</SubText>
-          </a>
-          <a className="nav-link" href="#">
+          </Link>
+          <Link to="/category/speakers" className="nav-link" href="#">
             <SubText color="#fff">speakers</SubText>
-          </a>
-          <a className="nav-link" href="#">
+          </Link>
+          <Link to="/category/earphones" className="nav-link" href="#">
             <SubText color="#fff">eadphones</SubText>
-          </a>
+          </Link>
         </nav>
       </div>
       <div className="content">

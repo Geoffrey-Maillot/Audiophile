@@ -1,9 +1,12 @@
 // Import React
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Import Style
 import './styles.scss';
-import { H1, H2, H4, H5, Button, Body } from 'src/styles/styledComponents';
+import { H1, H2, H5, Button, Body } from 'src/styles/styledComponents';
+
+// Import React Router
+import { Link } from 'react-router-dom';
 
 // Import Components
 import HeaderHome from './HeaderHome';
@@ -17,14 +20,22 @@ import speakerZx9 from 'src/assets/img/home/mobile/image-speaker-zx9.png';
 import { useMediaQuery } from 'react-responsive';
 
 const HomePage = () => {
+  // Media Querries
   const isDesktop = useMediaQuery({ query: '(min-width: 1124px)' });
 
+  // Scroll to the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
+  // RETURN -->
   return (
     <div className="homepage">
       {/*HEADER */}
       <HeaderHome />
       <main className="container-large">
         <Categories />
+
         {/*SPEAKER ZX9*/}
         <div className="speaker-zx9">
           <div>
@@ -49,20 +60,27 @@ const HomePage = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </Body>
-            <Button>see product</Button>
+            <Link to="/product/zx9-speaker">
+              <Button>see product</Button>
+            </Link>
           </div>
         </div>
         {/*SPEAKER ZX7*/}
         <div className="speaker-zx7">
           <H5>zx7 speaker</H5>
-          <Button>See Product</Button>
+          <Link to="/product/zx7-speaker">
+            {' '}
+            <Button>See Product</Button>
+          </Link>
         </div>
         {/*SPEAKER EARPHONE*/}
         <div className="earphone">
           <div className="earphone_img" />
           <div className="earphone_content">
             <H5 className="content-text">YX1 earphones</H5>
-            <Button>See Product</Button>
+            <Link to="/product/yx1-earphones">
+              <Button>See Product</Button>
+            </Link>
           </div>
         </div>
         {/*BEST AUDIO GEAR*/}

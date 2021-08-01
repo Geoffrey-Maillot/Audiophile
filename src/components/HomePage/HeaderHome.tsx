@@ -11,6 +11,9 @@ import {
   H1Mobile,
 } from 'src/styles/styledComponents';
 
+// Import React Router
+import { Link } from 'react-router-dom';
+
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
 
@@ -39,9 +42,12 @@ const HeaderHome = () => {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </SubText>
-          <Button primary style={{ marginTop: '30px' }}>
-            See Product
-          </Button>
+
+          <Link to="/product/xx99-mark-two-headphones">
+            <Button primary style={{ marginTop: '30px' }}>
+              See Product
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
