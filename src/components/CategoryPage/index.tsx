@@ -37,6 +37,7 @@ const CategoryPage = () => {
           {slug}
         </H4>
       </header>
+
       {/* CONTENT */}
       <div className="category-page_content container-large">
         {/* ITEM PRODUCT */}

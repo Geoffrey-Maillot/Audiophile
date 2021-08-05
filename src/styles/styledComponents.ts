@@ -178,7 +178,7 @@ width: 100%;
 height: 56px;
 border: 1px solid #CFCFCF;
 border-radius: 8px;
-margin: 8px;
+margin: 16px 0;
 padding-left: 24px;
 
 color: #000;

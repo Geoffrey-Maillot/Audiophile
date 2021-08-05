@@ -32,10 +32,11 @@ interface Props {
   features: string;
   includes: [
     {
-      quantity: number;
+      quantity: string;
       item: string;
     },
   ];
+
   image: {
     desktop: string;
     mobile: string;

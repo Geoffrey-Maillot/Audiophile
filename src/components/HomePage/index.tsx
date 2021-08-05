@@ -35,7 +35,6 @@ const HomePage = () => {
       <HeaderHome />
       <main className="container-large">
         <Categories />
-
         {/*SPEAKER ZX9*/}
         <div className="speaker-zx9">
           <div>

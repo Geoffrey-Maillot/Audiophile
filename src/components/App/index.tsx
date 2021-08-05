@@ -13,6 +13,8 @@ import HomePage from 'src/components/HomePage';
 import Footer from 'src/components/Footer';
 import CategoryPage from 'src/components/CategoryPage';
 import ProductPage from 'src/components/ProductPage';
+import ModalCart from 'src/components/ModalCart';
+import Checkout from 'src/components/Checkout';
 
 // == Composant
 const App = () => {
@@ -22,7 +24,8 @@ const App = () => {
   return (
     <div className="app">
       <NavBar />
-      <Switch>
+      {/* <ModalCart /> */}
+      {/*  <Switch>
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -32,8 +35,8 @@ const App = () => {
         <Route path="/product/:slug">
           <ProductPage />
         </Route>
-      </Switch>
-
+      </Switch>*/}
+      <Checkout />
       <Footer />
     </div>
   );

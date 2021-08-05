@@ -1,0 +1,133 @@
+/*------------------------
+    CONTAINER MODAL
+-------------------------*/
+.modal {
+  width: 100%;
+  height: 100vh;
+  top: 89px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+
+  /*------------------------
+     MODALCART
+-------------------------*/
+  .container-modalcart {
+    position: relative;
+    height: 100%;
+    .modalcart {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 100%;
+      max-width: 327px;
+      padding: 28px;
+      border-radius: 8px;
+
+      background-color: #fff;
+      /*------------------------
+   CARTHEADER
+-------------------------*/
+
+      &_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .remove {
+          background-color: transparent;
+          border: none;
+          color: #808080;
+          text-decoration: underline;
+          font-weight: 700;
+        }
+      }
+      /*------------------------
+    ITEMS
+-------------------------*/
+
+      &_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 24px 0;
+
+        .item {
+          width: calc(62% - 10px);
+          min-width: 158px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          &_img {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            margin-right: 16px;
+
+            img {
+              border-radius: 8px;
+            }
+          }
+
+          &_description {
+            &-name {
+              font-weight: 700;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        .number-button {
+          width: 96px;
+          height: 32px;
+          margin-top: 8px;
+          button {
+            border: none;
+            font-size: 1.2em;
+          }
+          button:hover {
+            color: #d87d4a;
+          }
+        }
+      }
+      /*------------------------
+    FOOTER
+-------------------------*/
+
+      &_total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &_checkout {
+        width: 100%;
+        margin-top: 24px;
+      }
+    }
+  }
+}
+
+/*------------------------
+    MEDIA QUERRIES
+-------------------------*/
+
+@media screen and (min-width: 768px) {
+  .modal {
+    .container-modalcart {
+      .modalcart {
+        max-width: 377px;
+      }
+    }
+  }
+}

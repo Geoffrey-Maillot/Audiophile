@@ -1,0 +1,200 @@
+/*---------------------- 
+      CHECKOUT
+----------------------*/
+.container-checkout {
+  background-color: #f2f2f2;
+  padding-top: 16px;
+  padding-bottom: 97px;
+
+  label {
+    margin-top: 20px;
+    display: inline-block;
+  }
+
+  .goback {
+    margin: 60px 00 24px 0;
+  }
+
+  .container-flex {
+    .checkout {
+      width: 100%;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 24px;
+
+      // DETAIL
+      &_detail {
+        width: 100%;
+        margin-top: 30px;
+      }
+      // INFO
+      &_info {
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      //PAYMENT
+      &_payment {
+        width: 100%;
+        margin-top: 30px;
+      }
+    }
+
+    /*------------------------
+      SUMMARY
+--------------------------*/
+    .summary {
+      width: 100%;
+      padding: 32px 24px 24px 24px;
+      border-radius: 8px;
+      background-color: #fff;
+      margin-top: 32px;
+      &_item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 24px 0;
+
+        .item {
+          width: calc(62% - 10px);
+          min-width: 158px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          &_img {
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            margin-right: 16px;
+
+            img {
+              border-radius: 8px;
+            }
+          }
+
+          &_description {
+            &-name {
+              font-weight: 700;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        .quantity {
+          font-weight: 700;
+        }
+      }
+
+      &_total,
+      &_shipping,
+      &_vat,
+      &_grand-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-top: 20px;
+
+        p {
+          font-weight: 700;
+          color: #808080;
+        }
+      }
+
+      &_total {
+        margin-top: 40px;
+      }
+
+      &_button-pay {
+        width: 100%;
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+/*--------------------------
+      MEDIA QUERRIES 768px
+---------------------------*/
+
+@media screen and (min-width: 768px) {
+  .container-checkout {
+    padding-bottom: 116px;
+    // DETAIL
+    .checkout_detail {
+      &-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        &--name,
+        &--email,
+        &--phone {
+          width: calc(50% - 10px);
+        }
+      }
+    }
+    // INFO
+    .checkout_info {
+      &-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        &--zipcode,
+        &--city,
+        &--country {
+          width: calc(50% - 10px);
+        }
+      }
+    }
+    // PAYMENT
+    .checkout_payment {
+      &-flex {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &--method,
+        &--radio {
+          width: calc(50% - 10px);
+          label {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    // SUMMARY
+    .summary {
+      padding: 32px;
+    }
+  }
+}
+
+/*--------------------------
+      MEDIA QUERRIES 1024px
+---------------------------*/
+
+@media screen and (min-width: 1024px) {
+  .container-checkout {
+    padding-bottom: 116px;
+    .container-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .checkout {
+        width: calc(66% - 15px);
+      }
+      .summary {
+        width: calc(33% - 15px);
+      }
+    }
+  }
+}
