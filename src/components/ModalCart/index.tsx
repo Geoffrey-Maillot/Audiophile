@@ -3,8 +3,8 @@ import React from 'react';
 
 // Import Style
 import './styles.scss';
+
 import {
-  H4,
   H5,
   OverlineText,
   H6,

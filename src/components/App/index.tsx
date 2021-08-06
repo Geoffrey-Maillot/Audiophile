@@ -15,17 +15,24 @@ import CategoryPage from 'src/components/CategoryPage';
 import ProductPage from 'src/components/ProductPage';
 import ModalCart from 'src/components/ModalCart';
 import Checkout from 'src/components/Checkout';
+import ThanksMessage from 'src/components/ThanksMessage';
+
+interface Props {
+  activeCart?: boolean;
+  activeThanks?: boolean;
+}
 
 // == Composant
-const App = () => {
+const App = ({ activeCart = false, activeThanks = false }: Props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
   return (
     <div className="app">
       <NavBar />
-      {/* <ModalCart /> */}
-      {/*  <Switch>
+      {activeCart && <ModalCart />}
+      {activeThanks && <ThanksMessage />}
+      <Switch>
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -35,7 +42,7 @@ const App = () => {
         <Route path="/product/:slug">
           <ProductPage />
         </Route>
-      </Switch>*/}
+      </Switch>
       <Checkout />
       <Footer />
     </div>
