@@ -5,25 +5,25 @@ import { useParams } from 'react-router';
 
 // Import Component
 import Product from './Product';
-
-// Import Data
-import data from 'src/data/data.json';
-
-interface Props {
-  product: {};
-}
+import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
+import { productFilter, filterValue } from '../../Recoil/index';
 
 const ProductPage = () => {
   // Filter Product
   const { slug } = useParams<{ slug: string }>();
-  const product = data.filter((item) => item.slug === slug)[0];
+
+  // filter recoil
+  useSetRecoilState(filterValue)(slug);
+
+  // use Recoil selector
+  const product = useRecoilValue(productFilter);
 
   // Scroll to the top
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
-  return <Product {...product} />;
+  return product.length > 0 && <Product {...product[0]} />;
 };
 
 export default ProductPage;

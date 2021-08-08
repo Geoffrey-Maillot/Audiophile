@@ -22,8 +22,21 @@ interface Props {
   activeThanks?: boolean;
 }
 
+// ==> Import Data
+import data from 'src/data/data.json';
+
+// ==> Import Recoil
+import { useSetRecoilState } from 'recoil';
+import { initialData } from '../../Recoil/index';
+
 // == Composant
 const App = ({ activeCart = false, activeThanks = false }: Props) => {
+  // ==> Get Initial Data
+  const setInitialData = useSetRecoilState(initialData);
+  useEffect(() => {
+    setInitialData(data);
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -42,8 +55,10 @@ const App = ({ activeCart = false, activeThanks = false }: Props) => {
         <Route path="/product/:slug">
           <ProductPage />
         </Route>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
       </Switch>
-      <Checkout />
       <Footer />
     </div>
   );

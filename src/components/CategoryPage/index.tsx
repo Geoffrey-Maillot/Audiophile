@@ -13,15 +13,19 @@ import Categories from 'src/components/Categories';
 import BestGear from 'src/components/BestGear';
 import ItemProduct from './ItemProduct';
 
-// Import Data
-import data from 'src/data/data.json';
+// ==> Recoil
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { categoryFilter, filterValue } from '../../Recoil/index';
 
 // --> Component
 
 const CategoryPage = () => {
   // Filter Product
   const { slug } = useParams<{ slug: string }>();
-  const products = data.filter((item) => item.category === slug);
+  // Set recoil Filter
+  useSetRecoilState(filterValue)(slug);
+  //  product selector
+  const products = useRecoilValue(categoryFilter);
 
   // Scroll to the top
   useEffect(() => {

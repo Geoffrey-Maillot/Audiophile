@@ -104,6 +104,7 @@ const Product = ({
   },
   others,
 }: Props) => {
+  console.log(productImageMobile);
   // Media Querries Rules
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const isTablet = useMediaQuery({
