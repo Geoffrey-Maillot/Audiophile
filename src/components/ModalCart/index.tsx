@@ -18,7 +18,13 @@ import {
 import { useMediaQuery } from 'react-responsive';
 
 // ==> Recoil
-import { useSetRecoilState, useRecoilState, useResetRecoilState } from 'recoil';
+import {
+  useSetRecoilState,
+  useRecoilValue,
+  useResetRecoilState,
+  useRecoilState,
+} from 'recoil';
+import { exitAnimation } from '../../Recoil/index';
 
 import {
   statusCartComponent,
@@ -38,28 +44,35 @@ const ModalCart = () => {
   // Reset Cart
   const resetCart = useResetRecoilState(cartValue);
 
-  const [numberProduct, setNumberProduct] = useRecoilState(productNumber);
-  const [cart, setCart] = useRecoilState(cartValue);
+  const cart = useRecoilValue(cartValue);
 
   // Animation Close
-  const [isClose, setIsClose] = useState(false);
+  const [playExitAnimation, SetPlayExitAnimation] =
+    useRecoilState(exitAnimation);
 
   const handlerOnClickModal = (evt: any) => {
-    if (evt.target.className === 'modal') {
-      setIsClose(true);
+    if (
+      evt.target.className === 'container-modalcart container-large' ||
+      evt.target.className === 'modal' ||
+      evt.target.closest('.navbar_button-cart')
+    ) {
+      console.dir(evt.target);
+      SetPlayExitAnimation(true);
 
       setTimeout(() => {
+        SetPlayExitAnimation(false);
         closeCart(false);
       }, 400);
     }
   };
-
   // RETURN ==>
   return (
     <div className="modal" onClick={(evt) => handlerOnClickModal(evt)}>
       <div className="container-modalcart container-large">
         <div
-          className={`modalcart bounce-in-top ${isClose && 'slide-out-top'}`}
+          className={`modalcart bounce-in-top ${
+            playExitAnimation && 'slide-out-top'
+          }`}
         >
           {cart.length === 0 ? (
             <div style={{ textAlign: 'center' }}>

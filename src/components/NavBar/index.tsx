@@ -19,15 +19,39 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 // ==> Recoil
-import { useRecoilState } from 'recoil';
-import { statusCartComponent } from '../../Recoil/index';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { statusCartComponent, exitAnimation } from '../../Recoil/index';
 
 // Component
 const NavBar = () => {
   // Media Querries ==>
   const isDeskop = useMediaQuery({ query: '(min-width: 900px)' });
 
+  // Close CartModal ==>
   const [activeCart, setActiveCart] = useRecoilState(statusCartComponent);
+
+  // Animation Close
+  const SetPlayExitAnimation = useSetRecoilState(exitAnimation);
+
+  // ==> handler open / close CartModal
+  const handlerOnClickModal = (evt: any) => {
+    // if CartModal is close, Open it
+    activeCart === false ? setActiveCart(true) : null;
+    console.log(evt.target);
+    //  else play animation and close
+    if (
+      evt.target.className === 'container-modalcart container-large' ||
+      evt.target.className === 'modal' ||
+      (evt.target.closest('.navbar_button-cart') && activeCart)
+    ) {
+      SetPlayExitAnimation(true);
+
+      setTimeout(() => {
+        SetPlayExitAnimation(false);
+        setActiveCart(false);
+      }, 400);
+    }
+  };
 
   // Scroll to top ==>
   useEffect(() => {
@@ -79,7 +103,7 @@ const NavBar = () => {
         <button
           className="navbar_button-cart"
           type="button"
-          onClick={() => setActiveCart(!activeCart)}
+          onClick={(evt) => handlerOnClickModal(evt)}
         >
           <AiOutlineShoppingCart color="#fff" size="1.8em" />
         </button>

@@ -57,3 +57,9 @@ export const cartValue = atom({
   key: 'cart',
   default: [],
 })
+
+// ==> Boolean to play exit Animation Cart
+export const exitAnimation = atom({
+  key: 'exitAnimation',
+  default: false,
+}) 

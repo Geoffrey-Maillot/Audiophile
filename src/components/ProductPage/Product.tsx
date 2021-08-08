@@ -129,17 +129,38 @@ const Product = ({
   // prevent negative value ==>
   numberProduct < 0 ? setNumberProduct(0) : numberProduct;
 
+  // Add Product ==>
   const addProductToCart = () => {
+    // Add product if quantity > 0
     if (numberProduct > 0) {
-      setCart([
-        ...cart,
-        {
-          slug,
-          name,
-          price,
-          quantity: numberProduct,
-        },
-      ]);
+      // If product already exist
+      if (cart.filter((product) => product.name === name).length > 0) {
+        // I return a new array of products with modifies quantity...
+        const newCart = cart.map((product) => {
+          if (product.name === name) {
+            return {
+              ...product,
+              quantity: product.quantity + numberProduct,
+            };
+          } else {
+            return product;
+          }
+        });
+
+        setCart([...newCart]);
+      } else {
+        // Esle I add the new product in cart
+        setCart([
+          ...cart,
+          {
+            slug,
+            name,
+            price,
+            quantity: numberProduct,
+          },
+        ]);
+      }
+
       setNumberProduct(0);
       openModulCart(true);
     }
