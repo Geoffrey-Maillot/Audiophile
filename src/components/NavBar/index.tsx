@@ -18,9 +18,18 @@ import logo from 'src/assets/img/audiophile.png';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
+// ==> Recoil
+import { useRecoilState } from 'recoil';
+import { statusCartComponent } from '../../Recoil/index';
+
 // Component
 const NavBar = () => {
+  // Media Querries ==>
   const isDeskop = useMediaQuery({ query: '(min-width: 900px)' });
+
+  const [activeCart, setActiveCart] = useRecoilState(statusCartComponent);
+
+  // Scroll to top ==>
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -67,7 +76,13 @@ const NavBar = () => {
             </NavLink>
           </nav>
         )}
-        <AiOutlineShoppingCart color="#fff" size="1.8em" />
+        <button
+          className="navbar_button-cart"
+          type="button"
+          onClick={() => setActiveCart(!activeCart)}
+        >
+          <AiOutlineShoppingCart color="#fff" size="1.8em" />
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 // Import React
-import React from 'react';
+import React, { useState } from 'react';
 
 // Import Style
 import './styles.scss';
@@ -14,80 +14,112 @@ import {
   Body,
 } from 'src/styles/styledComponents';
 
-const cart = [
-  {
-    slug: 'xx99-mark-two-headphones',
-    name: 'XX99 MK II',
-    price: 2999,
-    quantity: 1,
-  },
-  {
-    slug: 'xx59-headphones',
-    name: 'XX59',
-    price: 899,
-    quantity: 2,
-  },
-  {
-    slug: 'yx1-earphones',
-    name: 'YX1',
-    price: 599,
-    quantity: 1,
-  },
-];
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
 
+// ==> Recoil
+import { useSetRecoilState, useRecoilState, useResetRecoilState } from 'recoil';
+
+import {
+  statusCartComponent,
+  productNumber,
+  cartValue,
+} from '../../Recoil/index';
+
 // --> COMPONENT
 const ModalCart = () => {
+  // ==> Media Querries
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  // State Recoil ==>
+  // Close Cart
+  const closeCart = useSetRecoilState(statusCartComponent);
+
+  // Reset Cart
+  const resetCart = useResetRecoilState(cartValue);
+
+  const [numberProduct, setNumberProduct] = useRecoilState(productNumber);
+  const [cart, setCart] = useRecoilState(cartValue);
+
+  // Animation Close
+  const [isClose, setIsClose] = useState(false);
+
+  const handlerOnClickModal = (evt: any) => {
+    if (evt.target.className === 'modal') {
+      setIsClose(true);
+
+      setTimeout(() => {
+        closeCart(false);
+      }, 400);
+    }
+  };
+
+  // RETURN ==>
   return (
-    <div className="modal">
-      <div className=" container-modalcart container-large">
-        <div className="modalcart">
-          <div className="modalcart_header">
-            <H5>Cart ({cart.length})</H5>
-            <button className="remove" color="#808080">
-              Remove all
-            </button>
-          </div>
-          {cart.map((item) => (
-            <div className="modalcart_item">
-              <div className="item">
-                <div className="item_img">
-                  <img
-                    src={
-                      require(`src/assets/img/cart/image-${item.slug}.jpg`)
-                        .default
-                    }
-                    alt={item.slug}
-                  />
-                </div>
-
-                <div className="item_description">
-                  {isMobile && (
-                    <Body className="item_description-name">{item.name}</Body>
-                  )}
-                  {!isMobile && (
-                    <H6 className="item_description-name">{item.name}</H6>
-                  )}
-                  <SubText color="#808080">$ {item.price}</SubText>
-                </div>
-              </div>
-              <ButtonShop className="number-button">
-                <button className="number-button--minus">-</button>
-                {item.quantity}
-                <button className="number-button--plus">+</button>
-              </ButtonShop>
+    <div className="modal" onClick={(evt) => handlerOnClickModal(evt)}>
+      <div className="container-modalcart container-large">
+        <div
+          className={`modalcart bounce-in-top ${isClose && 'slide-out-top'}`}
+        >
+          {cart.length === 0 ? (
+            <div style={{ textAlign: 'center' }}>
+              <H6>Votre panier est vide</H6>
             </div>
-          ))}
+          ) : (
+            <>
+              <div className="modalcart_header">
+                <H5>Cart ({cart.length})</H5>
+                <button
+                  className="remove"
+                  color="#808080"
+                  type="button"
+                  onClick={resetCart}
+                >
+                  Remove all
+                </button>
+              </div>
+              {cart.map((item) => (
+                <div className="modalcart_item">
+                  <div className="item">
+                    <div className="item_img">
+                      <img
+                        src={
+                          require(`src/assets/img/cart/image-${item.slug}.jpg`)
+                            .default
+                        }
+                        alt={item.slug}
+                      />
+                    </div>
 
-          <div className="modalcart_total">
-            <OverlineText>Total</OverlineText>
-            <H6>$ 5,396</H6>
-          </div>
-          <Button primary className="modalcart_checkout">
-            Checkout
-          </Button>
+                    <div className="item_description">
+                      {isMobile && (
+                        <Body className="item_description-name">
+                          {item.name}
+                        </Body>
+                      )}
+                      {!isMobile && (
+                        <H6 className="item_description-name">{item.name}</H6>
+                      )}
+                      <SubText color="#808080">$ {item.price}</SubText>
+                    </div>
+                  </div>
+                  <ButtonShop className="number-button">
+                    <button className="number-button--minus">-</button>
+                    {item.quantity}
+                    <button className="number-button--plus">+</button>
+                  </ButtonShop>
+                </div>
+              ))}
+
+              <div className="modalcart_total">
+                <OverlineText>Total</OverlineText>
+                <H6>$ 5,396</H6>
+              </div>
+              <Button primary className="modalcart_checkout">
+                Checkout
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>

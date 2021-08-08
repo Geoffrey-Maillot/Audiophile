@@ -25,6 +25,7 @@ import BestGear from 'src/components/BestGear';
 
 // Typescript Props
 interface Props {
+  slug: string;
   new: boolean;
   name: string;
   description: string;
@@ -72,8 +73,17 @@ interface Props {
   ];
 }
 
+// ==> Recoil
+import { useSetRecoilState, useRecoilState } from 'recoil';
+import {
+  statusCartComponent,
+  productNumber,
+  cartValue,
+} from '../../Recoil/index';
+
 // --> COMPONENT
 const Product = ({
+  slug,
   new: novelty,
   name,
   description,
@@ -104,7 +114,6 @@ const Product = ({
   },
   others,
 }: Props) => {
-  console.log(productImageMobile);
   // Media Querries Rules
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const isTablet = useMediaQuery({
@@ -112,9 +121,30 @@ const Product = ({
   });
   const isDesktop = useMediaQuery({ query: '(min-width: 1124px)' });
 
-  {
-    /*  RETURN -->*/
-  }
+  // State Recoil ==>
+  let [numberProduct, setNumberProduct] = useRecoilState(productNumber);
+  let [cart, setCart] = useRecoilState(cartValue);
+  const openModulCart = useSetRecoilState(statusCartComponent);
+
+  // prevent negative value ==>
+  numberProduct < 0 ? setNumberProduct(0) : numberProduct;
+
+  const addProductToCart = () => {
+    if (numberProduct > 0) {
+      setCart([
+        ...cart,
+        {
+          slug,
+          name,
+          price,
+          quantity: numberProduct,
+        },
+      ]);
+      setNumberProduct(0);
+      openModulCart(true);
+    }
+  };
+  // RETURN ==>
   return (
     <section className="product-page container-large">
       <Body className="goback" color="#8c8c8c">
@@ -149,10 +179,23 @@ const Product = ({
           </Body>
           <H6>{`$ ${price}`}</H6>
           <ButtonShop className="buttonshop">
-            <button className="buttonshop-button">-</button>0
-            <button className="buttonshop-button">+</button>
+            <button
+              className="buttonshop-button"
+              onClick={() => setNumberProduct((numberProduct -= 1))}
+            >
+              -
+            </button>
+            {numberProduct}
+            <button
+              className="buttonshop-button"
+              onClick={() => setNumberProduct((numberProduct += 1))}
+            >
+              +
+            </button>
           </ButtonShop>
-          <Button primary>Add to cart</Button>
+          <Button onClick={addProductToCart} primary>
+            Add to cart
+          </Button>
         </div>
       </div>
       {/* PRODUCT FEATURES */}

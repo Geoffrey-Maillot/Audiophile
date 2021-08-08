@@ -26,20 +26,25 @@ interface Props {
 import data from 'src/data/data.json';
 
 // ==> Import Recoil
-import { useSetRecoilState } from 'recoil';
-import { initialData } from '../../Recoil/index';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { initialData, statusCartComponent } from '../../Recoil/index';
 
 // == Composant
-const App = ({ activeCart = false, activeThanks = false }: Props) => {
+const App = ({ activeThanks = false }: Props) => {
   // ==> Get Initial Data
   const setInitialData = useSetRecoilState(initialData);
   useEffect(() => {
     setInitialData(data);
   }, []);
 
+  const activeCart = useRecoilValue(statusCartComponent);
+
+  // ==> Scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  // Return ==>
   return (
     <div className="app">
       <NavBar />

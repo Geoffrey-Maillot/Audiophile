@@ -42,8 +42,10 @@ const cart = [
 ];
 
 const Checkout = () => {
+  // ==> Media Querries
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
+  // RETURN ==>
   return (
     <section className="container-checkout">
       <div className="container container-large">

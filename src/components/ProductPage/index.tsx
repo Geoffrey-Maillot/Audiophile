@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 
 // Import Component
 import Product from './Product';
-import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { productFilter, filterValue } from '../../Recoil/index';
 
 const ProductPage = () => {

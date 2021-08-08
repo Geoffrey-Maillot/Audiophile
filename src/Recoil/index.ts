@@ -1,6 +1,8 @@
 import { atom, selector } from "recoil";
 
-// ==> Initial Data
+/*--------------------------------
+            INITIAL DATA
+-----------------------------------*/
 export const initialData = atom({
   key: 'initialData',
   default: [],
@@ -34,3 +36,24 @@ export const productFilter = selector({
 }
 })
 
+/*--------------------------------
+             CART
+-----------------------------------*/
+
+// ==> active Modal Cart
+export const statusCartComponent = atom({
+  key: 'statusCartComponent',
+  default: false,
+})
+
+//==> Product Number
+export const productNumber = atom({
+  key: 'productNumber',
+  default: 0,
+})
+
+// ==> Cart
+export const cartValue = atom({
+  key: 'cart',
+  default: [],
+})
