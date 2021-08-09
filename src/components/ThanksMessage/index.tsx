@@ -1,48 +1,52 @@
 // Import React
 import React from 'react';
 
+// ==> Import React router
+import { useHistory } from 'react-router';
+
 // Import React Icon
 import { GoCheck } from 'react-icons/go';
 
 // Import Style
 import './styles.scss';
-import {
-  H4,
-  H5,
-  OverlineText,
-  H6,
-  Button,
-  ButtonShop,
-  SubText,
-  Body,
-} from 'src/styles/styledComponents';
+import { H4, H6, Button, SubText, Body } from 'src/styles/styledComponents';
 
-const cart = [
-  {
-    slug: 'xx99-mark-two-headphones',
-    name: 'XX99 MK',
-    price: 2999,
-    quantity: 1,
-  },
-  {
-    slug: 'xx59-headphones',
-    name: 'XX59',
-    price: 899,
-    quantity: 2,
-  },
-  {
-    slug: 'yx1-earphones',
-    name: 'YX1',
-    price: 599,
-    quantity: 1,
-  },
-];
-// Import Librairie
-import { useMediaQuery } from 'react-responsive';
+// ==> Import Recoil
+import {
+  useRecoilValue,
+  useRecoilState,
+  useSetRecoilState,
+  useResetRecoilState,
+} from 'recoil';
+import { statusCartComponent } from '../../Recoil/index';
+import {
+  cartValue,
+  modalThanksMessage,
+  totalCart,
+  user,
+} from '../../Recoil/index';
 
 // --> COMPONENT
 const ThanksMessage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const cart = useRecoilValue(cartValue);
+  const closeModal = useSetRecoilState(modalThanksMessage);
+  const total = useRecoilValue(totalCart);
+  const name = useRecoilValue(user).name;
+  const resetCart = useResetRecoilState(cartValue);
+
+  // => prevent Open Cart
+  const [statusModalCart, setStatusModalCart] =
+    useRecoilState(statusCartComponent);
+  if (statusModalCart) setStatusModalCart(false);
+
+  // ==> Reset and Redirect
+  const history = useHistory();
+  const handlerOnClick = () => {
+    closeModal(false);
+    resetCart();
+    history.push('/');
+  };
+
   return (
     <div className="modal">
       <div className="thanks-message">
@@ -50,7 +54,15 @@ const ThanksMessage = () => {
           <GoCheck size="2em" color="#fff" />
         </div>
         <H4 className="thanks-message_text">
-          Thank you <br /> for your order
+          Thank you <br /> for your order{' '}
+          <span>
+            <H6
+              color="#d87d4a"
+              style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}
+            >
+              {name}
+            </H6>
+          </span>
         </H4>
         <div className="thanks-message_product">
           <Body color="#808080">
@@ -92,12 +104,12 @@ const ThanksMessage = () => {
               <Body className="total_text" color="#7f7f7f">
                 Grand Total
               </Body>
-              <H6 color="#fff">€ 5,5446</H6>
+              <H6 color="#fff">{`$ ${total + 50}`}</H6>
             </div>
           </div>
         </div>
 
-        <Button className="home" primary>
+        <Button className="home" primary type="button" onClick={handlerOnClick}>
           Back to home
         </Button>
       </div>

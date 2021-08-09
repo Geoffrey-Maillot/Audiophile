@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import './styles.scss';
 
 // Import React router
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Import Component
 import NavBar from 'src/components/NavBar';
@@ -17,20 +17,21 @@ import ModalCart from 'src/components/ModalCart';
 import Checkout from 'src/components/Checkout';
 import ThanksMessage from 'src/components/ThanksMessage';
 
-interface Props {
-  activeCart?: boolean;
-  activeThanks?: boolean;
-}
-
 // ==> Import Data
 import data from 'src/data/data.json';
 
 // ==> Import Recoil
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { initialData, statusCartComponent } from '../../Recoil/index';
+
+import {
+  initialData,
+  statusCartComponent,
+  cartValue,
+  modalThanksMessage,
+} from '../../Recoil/index';
 
 // == Composant
-const App = ({ activeThanks = false }: Props) => {
+const App = () => {
   // ==> Get Initial Data
   const setInitialData = useSetRecoilState(initialData);
   useEffect(() => {
@@ -39,6 +40,8 @@ const App = ({ activeThanks = false }: Props) => {
 
   const activeCart = useRecoilValue(statusCartComponent);
   const cartIsOpen = useRecoilValue(statusCartComponent);
+  const cart = useRecoilValue(cartValue);
+  const thanksMessageIsOpen = useRecoilValue(modalThanksMessage);
 
   // ==> Scroll to top
   useEffect(() => {
@@ -47,10 +50,14 @@ const App = ({ activeThanks = false }: Props) => {
 
   // Return ==>
   return (
-    <div className={`app ${cartIsOpen && "fixed-position"}`}>
+    <div
+      className={`app ${
+        (cartIsOpen || thanksMessageIsOpen) && 'fixed-position'
+      }`}
+    >
       <NavBar />
       {activeCart && <ModalCart />}
-      {activeThanks && <ThanksMessage />}
+      {thanksMessageIsOpen && <ThanksMessage />}
       <Switch>
         <Route exact path="/">
           <HomePage />
@@ -62,7 +69,7 @@ const App = ({ activeThanks = false }: Props) => {
           <ProductPage />
         </Route>
         <Route path="/checkout">
-          <Checkout />
+          {cart.length > 0 ? <Checkout /> : <Redirect to="/" />}
         </Route>
       </Switch>
       <Footer />

@@ -19,31 +19,39 @@ import {
 
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
-
-const cart = [
-  {
-    slug: 'xx99-mark-two-headphones',
-    name: 'XX99 MK II',
-    price: 2999,
-    quantity: 1,
-  },
-  {
-    slug: 'xx59-headphones',
-    name: 'XX59',
-    price: 899,
-    quantity: 2,
-  },
-  {
-    slug: 'yx1-earphones',
-    name: 'YX1',
-    price: 599,
-    quantity: 1,
-  },
-];
+import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
+import {
+  cartValue,
+  totalCart,
+  user,
+  modalThanksMessage,
+} from '../../Recoil/index';
 
 const Checkout = () => {
   // ==> Media Querries
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  // State Recoil
+  const cart = useRecoilValue(cartValue);
+  const total = useRecoilValue(totalCart);
+  const setNewUser = useSetRecoilState(user);
+  const newUser = useRecoilValue(user);
+
+  // control field
+  const handlerOnChange = (evt: any) => {
+    const name = evt.target.name;
+    const value = evt.target.value;
+    setNewUser({
+      ...newUser,
+      [name]: value,
+    });
+  };
+
+  const openModalThanks = useSetRecoilState(modalThanksMessage);
+  const handlerOnSubmit = (evt: any) => {
+    evt.preventDefault();
+    openModalThanks(true);
+  };
 
   // RETURN ==>
   return (
@@ -52,7 +60,10 @@ const Checkout = () => {
         <Body className="goback" color="#8c8c8c">
           Go Back
         </Body>
-        <div className="container-flex">
+        <form
+          className="container-flex"
+          onSubmit={(evt) => handlerOnSubmit(evt)}
+        >
           {/* CHECKOUT*/}
           <div className="checkout">
             <H4>Checkout</H4>
@@ -62,15 +73,40 @@ const Checkout = () => {
               <div className="checkout_detail-flex">
                 <div className="checkout_detail-flex--name">
                   <Label htmlFor="name">Name</Label>
-                  <Textfield id="name" name="name" type="text" required />
+                  <Textfield
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={newUser.name}
+                    required
+                    onChange={(evt) => {
+                      handlerOnChange(evt);
+                    }}
+                  />
                 </div>
                 <div className="checkout_detail-flex--email">
                   <Label htmlFor="email">Email Adress</Label>
-                  <Textfield id="email" name="email" type="email" required />
+                  <Textfield
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={newUser.email}
+                    onChange={(evt) => {
+                      handlerOnChange(evt);
+                    }}
+                  />
                 </div>
                 <div className="checkout_detail-flex--phone">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Textfield id="phone" name="phone" type="tel" />
+                  <Textfield
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={newUser.phone}
+                    onChange={(evt) => {
+                      handlerOnChange(evt);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -79,7 +115,15 @@ const Checkout = () => {
               <SubText color="#d87d4a">Shipping info</SubText>
               <div className="checkout_detail-adress">
                 <Label htmlFor="adress">Your Adress</Label>
-                <Textfield id="adress" name="adress" type="text" required />
+                <Textfield
+                  id="adress"
+                  name="adress"
+                  type="text"
+                  value={newUser.adress}
+                  onChange={(evt) => {
+                    handlerOnChange(evt);
+                  }}
+                />
               </div>
               <div className="checkout_info-flex">
                 <div className="checkout_info-flex--zipcode">
@@ -88,16 +132,35 @@ const Checkout = () => {
                     id="zipcode"
                     name="zipCode"
                     type="number"
-                    required
+                    value={newUser.zipCode}
+                    onChange={(evt) => {
+                      handlerOnChange(evt);
+                    }}
                   />
                 </div>
                 <div className="checkout_info-flex--city">
                   <Label htmlFor="city">City</Label>
-                  <Textfield id="city" name="city" type="text" />
+                  <Textfield
+                    id="city"
+                    name="city"
+                    type="text"
+                    value={newUser.city}
+                    onChange={(evt) => {
+                      handlerOnChange(evt);
+                    }}
+                  />
                 </div>
                 <div className="checkout_info-flex--country">
                   <Label htmlFor="country">Country</Label>
-                  <Textfield id="country" name="country" type="text" />
+                  <Textfield
+                    id="country"
+                    name="country"
+                    type="text"
+                    value={newUser.country}
+                    onChange={(evt) => {
+                      handlerOnChange(evt);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -115,6 +178,9 @@ const Checkout = () => {
                       id="payment"
                       name="payment"
                       value="paypal"
+                      onChange={(evt) => {
+                        handlerOnChange(evt);
+                      }}
                     />
                     Paypal
                   </DivRadio>
@@ -124,6 +190,9 @@ const Checkout = () => {
                       id="payment"
                       name="payment"
                       value="cb"
+                      onChange={(evt) => {
+                        handlerOnChange(evt);
+                      }}
                     />
                     CB
                   </DivRadio>
@@ -164,7 +233,7 @@ const Checkout = () => {
             ))}
             <div className="summary_total">
               <OverlineText>Total</OverlineText>
-              <H6>$ 5,396</H6>
+              <H6>$ {total}</H6>
             </div>
             <div className="summary_shipping">
               <OverlineText>Shipping</OverlineText>
@@ -176,13 +245,18 @@ const Checkout = () => {
             </div>
             <div className="summary_grand-total">
               <OverlineText>Grand Total</OverlineText>
-              <H6 color="#d87d4a">$ 5,446</H6>
+              <H6 color="#d87d4a">{`$ ${total + 50}`}</H6>
             </div>
-            <Button className="summary_button-pay" primary>
+            <Button
+              type="submit"
+              className="summary_button-pay"
+              primary
+              onSubmit={(evt) => handlerOnSubmit(evt)}
+            >
               Continue & pay
             </Button>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   );

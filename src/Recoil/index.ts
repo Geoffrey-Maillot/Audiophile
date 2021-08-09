@@ -63,3 +63,44 @@ export const exitAnimation = atom({
   key: 'exitAnimation',
   default: false,
 }) 
+
+export const totalCart = atom({
+  key: 'totalCart',
+  default: 0
+})
+
+/*----------------------------------
+             CHECKOUT
+-----------------------------------*/
+export interface User {
+  name? : string;
+  email? : string;
+  phone? : number | string;
+  adress? : string;
+  zipCode? : number | string;
+  city? : string;
+  country? : string;
+  payment? : string;
+}
+
+export const user = atom({
+  key: 'user',
+  default: {
+  name: '',
+  email: '',
+  phone: '',
+  adress: '',
+  zipCode: '',
+  city: '',
+  country: '',
+  payment: '',
+} as User,
+})
+
+/*----------------------------------
+            Thanks Message
+-----------------------------------*/
+export const modalThanksMessage = atom({
+  key: 'modalThanksMessage',
+  default: false,
+})

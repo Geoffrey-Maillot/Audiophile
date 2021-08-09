@@ -14,6 +14,9 @@ import {
   Body,
 } from 'src/styles/styledComponents';
 
+// ==> React router
+import { useHistory } from 'react-router-dom';
+
 // ==> Import Component
 import ModalRemoveProduct from './ModalRemoveProduct';
 
@@ -27,6 +30,7 @@ import {
   statusCartComponent,
   cartValue,
   exitAnimation,
+  totalCart,
 } from '../../Recoil/index';
 
 // --> COMPONENT
@@ -38,7 +42,7 @@ const ModalCart = () => {
   const closeCart = useSetRecoilState(statusCartComponent);
   const resetCart = useResetRecoilState(cartValue);
   const [cart, setCart] = useRecoilState(cartValue);
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useRecoilState(totalCart);
 
   // ==> Total Price
   useEffect(() => {
@@ -97,6 +101,13 @@ const ModalCart = () => {
     });
     setCart([...newCart]);
     setModifiedQuantity(0);
+  };
+
+  // => Go Checkout
+  const history = useHistory();
+  const goCheckout = () => {
+    closeCart(false);
+    history.push('/checkout');
   };
 
   // RETURN ==>
@@ -183,7 +194,11 @@ const ModalCart = () => {
                 <OverlineText>Total</OverlineText>
                 <H6>$ {total}</H6>
               </div>
-              <Button primary className="modalcart_checkout">
+              <Button
+                primary
+                className="modalcart_checkout"
+                onClick={goCheckout}
+              >
                 Checkout
               </Button>
             </>
