@@ -1,5 +1,5 @@
 // Import React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Import Style
 import './styles.scss';
@@ -38,6 +38,18 @@ const ModalCart = () => {
   const closeCart = useSetRecoilState(statusCartComponent);
   const resetCart = useResetRecoilState(cartValue);
   const [cart, setCart] = useRecoilState(cartValue);
+  const [total, setTotal] = useState(0);
+
+  // ==> Total Price
+  useEffect(() => {
+    if (cart.length > 0) {
+      setTotal(
+        cart
+          .map((product) => product.price * product.quantity)
+          .reduce((acc, current) => acc + current),
+      );
+    }
+  }, [cart]);
 
   // ==> Close modalCart with animation
   const [playExitAnimation, SetPlayExitAnimation] =
@@ -169,7 +181,7 @@ const ModalCart = () => {
 
               <div className="modalcart_total">
                 <OverlineText>Total</OverlineText>
-                <H6>$ 5,396</H6>
+                <H6>$ {total}</H6>
               </div>
               <Button primary className="modalcart_checkout">
                 Checkout
