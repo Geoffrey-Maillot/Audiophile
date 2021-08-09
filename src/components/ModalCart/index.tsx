@@ -14,22 +14,19 @@ import {
   Body,
 } from 'src/styles/styledComponents';
 
+// ==> Import Component
+import ModalRemoveProduct from './ModalRemoveProduct';
+
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
 
 // ==> Recoil
-import {
-  useSetRecoilState,
-  useRecoilValue,
-  useResetRecoilState,
-  useRecoilState,
-} from 'recoil';
-import { exitAnimation } from '../../Recoil/index';
+import { useSetRecoilState, useResetRecoilState, useRecoilState } from 'recoil';
 
 import {
   statusCartComponent,
-  productNumber,
   cartValue,
+  exitAnimation,
 } from '../../Recoil/index';
 
 // --> COMPONENT
@@ -37,16 +34,12 @@ const ModalCart = () => {
   // ==> Media Querries
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
-  // State Recoil ==>
-  // Close Cart
+  // ==> State Recoil
   const closeCart = useSetRecoilState(statusCartComponent);
-
-  // Reset Cart
   const resetCart = useResetRecoilState(cartValue);
+  const [cart, setCart] = useRecoilState(cartValue);
 
-  const cart = useRecoilValue(cartValue);
-
-  // Animation Close
+  // ==> Close modalCart with animation
   const [playExitAnimation, SetPlayExitAnimation] =
     useRecoilState(exitAnimation);
 
@@ -56,7 +49,6 @@ const ModalCart = () => {
       evt.target.className === 'modal' ||
       evt.target.closest('.navbar_button-cart')
     ) {
-      console.dir(evt.target);
       SetPlayExitAnimation(true);
 
       setTimeout(() => {
@@ -65,6 +57,36 @@ const ModalCart = () => {
       }, 400);
     }
   };
+
+  // ==> Change the quantity of product
+  let [modifiedQuantity, setModifiedQuantity] = useState(0);
+  let [activeModalRemove, setActiveModalRemove] = useState(false);
+  let [slugTargetModal, setSlugTargetModal] = useState('');
+  const addProduct = (slug: string, modifier: string) => {
+    setModifiedQuantity((modifiedQuantity += 1));
+    const newCart = cart.map((product) => {
+      if (product.slug === slug) {
+        if (product.quantity === 1 && modifier === 'moins') {
+          setSlugTargetModal(product.slug);
+          setActiveModalRemove(true);
+
+          return product;
+        }
+        return {
+          ...product,
+          quantity:
+            modifier === 'plus'
+              ? product.quantity + modifiedQuantity
+              : product.quantity - modifiedQuantity,
+        };
+      } else {
+        return product;
+      }
+    });
+    setCart([...newCart]);
+    setModifiedQuantity(0);
+  };
+
   // RETURN ==>
   return (
     <div className="modal" onClick={(evt) => handlerOnClickModal(evt)}>
@@ -93,6 +115,13 @@ const ModalCart = () => {
               </div>
               {cart.map((item) => (
                 <div className="modalcart_item">
+                  {/* Modal RemoveProduct*/}
+                  {activeModalRemove && slugTargetModal === item.slug && (
+                    <ModalRemoveProduct
+                      closeModal={setActiveModalRemove}
+                      slug={item.slug}
+                    />
+                  )}
                   <div className="item">
                     <div className="item_img">
                       <img
@@ -117,9 +146,23 @@ const ModalCart = () => {
                     </div>
                   </div>
                   <ButtonShop className="number-button">
-                    <button className="number-button--minus">-</button>
+                    <button
+                      className="number-button--minus"
+                      onClick={() => {
+                        addProduct(item.slug, 'moins');
+                      }}
+                    >
+                      -
+                    </button>
                     {item.quantity}
-                    <button className="number-button--plus">+</button>
+                    <button
+                      className="number-button--plus"
+                      onClick={() => {
+                        addProduct(item.slug, 'plus');
+                      }}
+                    >
+                      +
+                    </button>
                   </ButtonShop>
                 </div>
               ))}

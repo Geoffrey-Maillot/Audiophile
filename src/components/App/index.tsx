@@ -38,6 +38,7 @@ const App = ({ activeThanks = false }: Props) => {
   }, []);
 
   const activeCart = useRecoilValue(statusCartComponent);
+  const cartIsOpen = useRecoilValue(statusCartComponent);
 
   // ==> Scroll to top
   useEffect(() => {
@@ -46,7 +47,7 @@ const App = ({ activeThanks = false }: Props) => {
 
   // Return ==>
   return (
-    <div className="app">
+    <div className={`app ${cartIsOpen && "fixed-position"}`}>
       <NavBar />
       {activeCart && <ModalCart />}
       {activeThanks && <ThanksMessage />}
