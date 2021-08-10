@@ -17,9 +17,14 @@ import {
   Radio,
 } from 'src/styles/styledComponents';
 
+// Import React Router
+import { useHistory } from 'react-router-dom';
+
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
-import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
+
+// ==> Recoil
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   cartValue,
   totalCart,
@@ -53,13 +58,26 @@ const Checkout = () => {
     openModalThanks(true);
   };
 
+  // ==> Go Back
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   // RETURN ==>
   return (
     <section className="container-checkout">
       <div className="container container-large">
-        <Body className="goback" color="#8c8c8c">
-          Go Back
-        </Body>
+        <button
+          type="button"
+          style={{ border: 'none', backgroundColor: 'transparent' }}
+          onClick={goBack}
+        >
+          <Body className="goback" color="#8c8c8c">
+            Go Back
+          </Body>
+        </button>
         <form
           className="container-flex"
           onSubmit={(evt) => handlerOnSubmit(evt)}

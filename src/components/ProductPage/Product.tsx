@@ -14,7 +14,7 @@ import {
 } from 'src/styles/styledComponents';
 
 // Import React Router
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // Import Librairie
 import { useMediaQuery } from 'react-responsive';
@@ -160,17 +160,31 @@ const Product = ({
           },
         ]);
       }
-
       setNumberProduct(0);
       openModulCart(true);
     }
   };
+
+  // ==> Go Back
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   // RETURN ==>
   return (
     <section className="product-page container-large">
-      <Body className="goback" color="#8c8c8c">
-        Go Back
-      </Body>
+      <button
+        type="button"
+        style={{ border: 'none', backgroundColor: 'transparent' }}
+        onClick={goBack}
+      >
+        <Body className="goback" color="#8c8c8c">
+          Go Back
+        </Body>
+      </button>
+
       {/* PRODUCT IMG / DESCRIPTION */}
       <div className="product">
         <div className="product_img">
