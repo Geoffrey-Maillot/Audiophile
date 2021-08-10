@@ -46,7 +46,7 @@ const CategoryPage = () => {
       <div className="category-page_content container-large">
         {/* ITEM PRODUCT */}
         {products.map((product) => (
-          <ItemProduct key="product.id" {...product} />
+          <ItemProduct key={product.slug} {...product} />
         ))}
         {/* Component -->*/}
         <Categories />

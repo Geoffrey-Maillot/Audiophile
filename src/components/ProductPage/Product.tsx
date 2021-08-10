@@ -245,8 +245,12 @@ const Product = ({
           <H5 className="box-title">In the box</H5>
           <div className="box-content">
             {includes.map((include) => (
-              <Body className="box-content--body" color="#8c8c8c">
-                <span className="box-content--span">{include.quantity} </span>{' '}
+              <Body
+                className="box-content--body"
+                color="#8c8c8c"
+                key={include.item}
+              >
+                <span className="box-content--span">{include.quantity} </span>
                 {include.item}
               </Body>
             ))}

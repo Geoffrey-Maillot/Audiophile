@@ -137,7 +137,7 @@ const ModalCart = () => {
                 </button>
               </div>
               {cart.map((item) => (
-                <div className="modalcart_item">
+                <div className="modalcart_item" key={item.slug}>
                   {/* Modal RemoveProduct*/}
                   {activeModalRemove && slugTargetModal === item.slug && (
                     <ModalRemoveProduct
