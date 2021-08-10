@@ -27,6 +27,15 @@
       &-link--active {
         color: #d87d4a;
       }
+
+      &_close-button {
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top: 5%;
+        right: 10%;
+        color: #fff;
+      }
     }
 
     &_button-cart {
@@ -51,6 +60,42 @@
         line-height: 20px;
         text-align: center;
         z-index: 2;
+      }
+    }
+
+    /*------------------------------
+    RESPONSIVE MENU
+----------------------------*/
+    .desktop {
+      display: none;
+    }
+
+    .responsive-menu {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      top: 0;
+
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #191919;
+      z-index: 10;
+    }
+
+    .entrance {
+      animation: entrance 0.3s ease-out;
+    }
+
+    @keyframes entrance {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
       }
     }
   }

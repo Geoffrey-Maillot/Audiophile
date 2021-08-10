@@ -28,6 +28,16 @@
         .contain-title {
           margin-bottom: 20px;
         }
+
+        .contain-link {
+          font-size: 0.875em;
+          font-weight: 700;
+
+          svg {
+            position: relative;
+            transform: translateY(3px);
+          }
+        }
       }
     }
   }

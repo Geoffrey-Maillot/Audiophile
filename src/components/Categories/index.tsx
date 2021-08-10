@@ -29,10 +29,8 @@ const Categories = () => (
           <div className="list-item_contain">
             <img className="contain-img" src={headphone} alt="headphone" />
             <H6 className="contain-title">Headphones</H6>
-            <Link to="/category/headphones">
-              <ButtonShop color="#797979">
-                Shop <HiChevronRight color="#D87D4A" size="1.3em" />
-              </ButtonShop>
+            <Link className="contain-link" to="/category/headphones">
+              Shop <HiChevronRight color="#D87D4A" size="1.3em" />
             </Link>
           </div>
         </li>
@@ -40,10 +38,8 @@ const Categories = () => (
           <div className="list-item_contain">
             <img className="contain-img" src={speaker} alt="speaker" />
             <H6 className="contain-title">Speakers</H6>
-            <Link to="/category/speakers">
-              <ButtonShop color="#797979">
-                Shop <HiChevronRight color="#D87D4A" size="1.3em" />
-              </ButtonShop>
+            <Link className="contain-link" to="/category/speakers">
+              Shop <HiChevronRight color="#D87D4A" size="1.3em" />
             </Link>
           </div>
         </li>
@@ -51,10 +47,8 @@ const Categories = () => (
           <div className="list-item_contain">
             <img className="contain-img" src={earphone} alt="earphone" />
             <H6 className="contain-title">Earphones</H6>
-            <Link to="/category/earphones">
-              <ButtonShop color="#797979">
-                Shop <HiChevronRight color="#D87D4A" size="1.3em" />
-              </ButtonShop>
+            <Link className="contain-link" to="/category/earphones">
+              Shop <HiChevronRight color="#D87D4A" size="1.3em" />
             </Link>
           </div>
         </li>

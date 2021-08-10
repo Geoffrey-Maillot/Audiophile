@@ -27,12 +27,13 @@
     position: relative;
     z-index: 900;
     .modalcart {
+      position: relative;
+      z-index: 5;
       width: 100%;
       max-width: 377px;
       padding: 28px;
       margin-top: 24px;
       border-radius: 8px;
-
       background-color: #fff;
       /*------------------------
        CARTHEADER

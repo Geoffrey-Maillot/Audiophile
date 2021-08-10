@@ -28,6 +28,7 @@ import {
   statusCartComponent,
   cartValue,
   modalThanksMessage,
+  boolOpenMenu,
 } from '../../Recoil/index';
 
 // == Composant
@@ -42,6 +43,7 @@ const App = () => {
   const cartIsOpen = useRecoilValue(statusCartComponent);
   const cart = useRecoilValue(cartValue);
   const thanksMessageIsOpen = useRecoilValue(modalThanksMessage);
+  const menuIsOpen = useRecoilValue(boolOpenMenu);
 
   // ==> Scroll to top
   useEffect(() => {
@@ -52,7 +54,7 @@ const App = () => {
   return (
     <div
       className={`app ${
-        (cartIsOpen || thanksMessageIsOpen) && 'fixed-position'
+        (cartIsOpen || thanksMessageIsOpen || menuIsOpen) && 'fixed-position'
       }`}
     >
       <NavBar />

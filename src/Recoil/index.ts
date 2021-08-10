@@ -104,3 +104,12 @@ export const modalThanksMessage = atom({
   key: 'modalThanksMessage',
   default: false,
 })
+
+/*----------------------------------
+            Menu
+-----------------------------------*/
+
+export const boolOpenMenu = atom({
+  key: 'boolOpenMenu',
+  default: false,
+})

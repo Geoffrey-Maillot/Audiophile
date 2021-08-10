@@ -1,5 +1,5 @@
 // Import React
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Import Style
 import './styles.scss';
@@ -17,6 +17,7 @@ import logo from 'src/assets/img/audiophile.png';
 // Import react-icon
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { RiCloseFill } from 'react-icons/ri';
 
 // ==> Recoil
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
@@ -24,6 +25,7 @@ import {
   statusCartComponent,
   exitAnimation,
   cartValue,
+  boolOpenMenu,
 } from '../../Recoil/index';
 
 // Component
@@ -57,6 +59,9 @@ const NavBar = () => {
     }
   };
 
+  // ==> Responsive Menu
+  const [menuIsOpen, setMenuIsOpen] = useRecoilState(boolOpenMenu);
+
   // ==> Cart
   const cart = useRecoilValue(cartValue);
 
@@ -67,46 +72,69 @@ const NavBar = () => {
   return (
     <div className="container-navbar">
       <div className="navbar container-large">
-        {!isDeskop && <GiHamburgerMenu color="#fff" size="1.8em" />}
+        {!isDeskop && (
+          <button
+            style={{ border: 'none', backgroundColor: 'transparent' }}
+            onClick={() => setMenuIsOpen(!menuIsOpen)}
+          >
+            <GiHamburgerMenu color="#fff" size="1.8em" />
+          </button>
+        )}
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        {isDeskop && (
-          <nav className="nav">
-            <NavLink
-              className="nav-link"
-              activeClassName="nav-link--active"
-              exact
-              to="/"
+
+        <nav
+          className={`nav entrance ${!isDeskop && !menuIsOpen && 'desktop'} ${
+            !isDeskop && menuIsOpen && 'responsive-menu'
+          }`}
+        >
+          {/*  Button CLose Menu */}
+          {menuIsOpen && !isDeskop && (
+            <button
+              className="nav_close-button"
+              onClick={() => setMenuIsOpen(false)}
             >
-              <SubText color="inherit">Home</SubText>
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              activeClassName="nav-link--active"
-              exact
-              to="/category/headphones"
-            >
-              <SubText color="inherit">Headphones</SubText>
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              activeClassName="nav-link--active"
-              exact
-              to="/category/speakers"
-            >
-              <SubText color="inherit">Speakers</SubText>
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              activeClassName="nav-link--active"
-              exact
-              to="/category/earphones"
-            >
-              <SubText color="inherit">Earphones</SubText>
-            </NavLink>
-          </nav>
-        )}
+              <RiCloseFill size="2.2em" />
+            </button>
+          )}
+          <NavLink
+            className="nav-link"
+            activeClassName="nav-link--active"
+            exact
+            to="/"
+            onClick={() => setMenuIsOpen(false)}
+          >
+            <SubText color="inherit">Home</SubText>
+          </NavLink>
+          <NavLink
+            className="nav-link"
+            activeClassName="nav-link--active"
+            exact
+            to="/category/headphones"
+            onClick={() => setMenuIsOpen(false)}
+          >
+            <SubText color="inherit">Headphones</SubText>
+          </NavLink>
+          <NavLink
+            className="nav-link"
+            activeClassName="nav-link--active"
+            exact
+            to="/category/speakers"
+            onClick={() => setMenuIsOpen(false)}
+          >
+            <SubText color="inherit">Speakers</SubText>
+          </NavLink>
+          <NavLink
+            className="nav-link"
+            activeClassName="nav-link--active"
+            exact
+            to="/category/earphones"
+            onClick={() => setMenuIsOpen(false)}
+          >
+            <SubText color="inherit">Earphones</SubText>
+          </NavLink>
+        </nav>
 
         <button
           className="navbar_button-cart"
