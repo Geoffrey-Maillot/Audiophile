@@ -19,8 +19,12 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 // ==> Recoil
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { statusCartComponent, exitAnimation } from '../../Recoil/index';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import {
+  statusCartComponent,
+  exitAnimation,
+  cartValue,
+} from '../../Recoil/index';
 
 // Component
 const NavBar = () => {
@@ -52,6 +56,9 @@ const NavBar = () => {
       }, 400);
     }
   };
+
+  // ==> Cart
+  const cart = useRecoilValue(cartValue);
 
   // Scroll to top ==>
   useEffect(() => {
@@ -100,12 +107,18 @@ const NavBar = () => {
             </NavLink>
           </nav>
         )}
+
         <button
           className="navbar_button-cart"
           type="button"
           onClick={(evt) => handlerOnClickModal(evt)}
         >
           <AiOutlineShoppingCart color="#fff" size="1.8em" />
+          {cart.length > 0 && (
+            <span className="navbar_button-cart--number-article">
+              {cart.length}
+            </span>
+          )}
         </button>
       </div>
     </div>

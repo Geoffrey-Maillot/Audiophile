@@ -30,8 +30,28 @@
     }
 
     &_button-cart {
+      position: relative;
       background-color: transparent;
       border: none;
+      display: block;
+      border-radius: 50%;
+      z-index: 1;
+
+      &--number-article {
+        background-color: #d87d4a;
+        position: absolute;
+        top: -10px;
+        right: -8px;
+        color: #000;
+        font-weight: 700;
+        display: block;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        z-index: 2;
+      }
     }
   }
 }
