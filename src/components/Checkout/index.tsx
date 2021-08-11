@@ -218,6 +218,7 @@ const Checkout = () => {
               </div>
             </div>
           </div>
+          {/* SUMMARY */}
           <div className="summary">
             <H5>Summary</H5>
             {cart.map((item) => (
@@ -240,7 +241,9 @@ const Checkout = () => {
                     {!isMobile && (
                       <H6 className="item_description-name">{item.name}</H6>
                     )}
-                    <SubText color="#808080">$ {item.price}</SubText>
+                    <SubText color="#808080">
+                      $ {item.price.toLocaleString('en-Us')}
+                    </SubText>
                   </div>
                 </div>
                 <Body
@@ -251,7 +254,7 @@ const Checkout = () => {
             ))}
             <div className="summary_total">
               <OverlineText>Total</OverlineText>
-              <H6>$ {total}</H6>
+              <H6>$ {total.toLocaleString('en-Us')}</H6>
             </div>
             <div className="summary_shipping">
               <OverlineText>Shipping</OverlineText>
@@ -259,11 +262,13 @@ const Checkout = () => {
             </div>
             <div className="summary_vat">
               <OverlineText>VAT (Included)</OverlineText>
-              <H6>$ 1079</H6>
+              <H6>{`$ ${Math.round(total * 0.2)}`}</H6>
             </div>
             <div className="summary_grand-total">
               <OverlineText>Grand Total</OverlineText>
-              <H6 color="#d87d4a">{`$ ${total + 50}`}</H6>
+              <H6 color="#d87d4a">{`$ ${(total + 50).toLocaleString(
+                'en-Us',
+              )}`}</H6>
             </div>
             <Button
               type="submit"

@@ -220,7 +220,7 @@ const Product = ({
           <Body className="body" color="#8c8c8c">
             {description}
           </Body>
-          <H6>{`$ ${price}`}</H6>
+          <H6>{`$ ${price.toLocaleString('en-Us')}`}</H6>
           <ButtonShop className={`buttonshop ${error && 'heartbeat'}`}>
             <button
               className="buttonshop-button"

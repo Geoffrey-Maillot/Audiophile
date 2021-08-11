@@ -165,7 +165,9 @@ const ModalCart = () => {
                       {!isMobile && (
                         <H6 className="item_description-name">{item.name}</H6>
                       )}
-                      <SubText color="#808080">$ {item.price}</SubText>
+                      <SubText color="#808080">
+                        $ {item.price.toLocaleString('en-Us')}
+                      </SubText>
                     </div>
                   </div>
                   <ButtonShop className="number-button">
@@ -192,7 +194,7 @@ const ModalCart = () => {
 
               <div className="modalcart_total">
                 <OverlineText>Total</OverlineText>
-                <H6>$ {total}</H6>
+                <H6>$ {total.toLocaleString('en-Us')}</H6>
               </div>
               <Button
                 primary

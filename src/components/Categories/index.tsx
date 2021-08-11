@@ -18,7 +18,7 @@ import speaker from 'src/assets/img/shared/desktop/image-speakers.png';
 import earphone from 'src/assets/img/shared/desktop/image-earphones.png';
 
 // Import styledComponent
-import { ButtonShop, H6 } from 'src/styles/styledComponents';
+import { H6 } from 'src/styles/styledComponents';
 
 // Component
 const Categories = () => (
